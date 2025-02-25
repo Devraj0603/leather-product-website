@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids' Leather Products | Leather Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .user-actions a {
+            color: white;
+            margin: 0 10px;
+        }
+
+        /* Kids’ Section Layout */
+        .kids-section {
+            padding: 40px 20px;
+        }
+
+        .kids-section h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .filter-section label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .filter-section select {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-item {
+            width: 200px;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-item h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product-item span {
+            color: green;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .product-item .btn {
+            background-color: #333;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Leather Shop</div>
+        <nav>
+            <ul>
+                <li><a href="website.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="kids.html">Kids</a></li>
+                <li><a href="#">New Releases</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="login.html">LOGIN</a>
+            <a href="#" class="cart">Cart (0)</a>
+        </div>
+    </header>
+
+    <!-- Kids’ Leather Products Section -->
+    <section class="kids-section">
+        <h1>Kids’ Leather Collection</h1>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div>
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="all">All</option>
+                    <option value="jackets">Jackets</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="bags">Bags</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+            </div>
+            <div>
+                <label for="price">Price Range:</label>
+                <select id="price">
+                    <option value="all">All</option>
+                    <option value="0-50">$0 - $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-150">$100 - $150</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="Kids Leather Jacket.jpg" alt="Kids Leather Jacket">
+                <h2>Kids Leather Jacket</h2>
+                <span>$80</span>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product-item">
+                <img src="Kids Leather Shoes.jpg" alt="Kids Leather Shoes">
+                <h2>Kids Leather Shoes</h2>
+                <span>$60</span>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product-item">
+                <img src="Kids Leather Bag.jpg" alt="Kids Leather Bag">
+                <h2>Kids Leather Bag</h2>
+                <span>$40</span>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product-item">
+                <img src="Leather belt.jpg" alt="Kids Leather Belt">
+                <h2>Leather Belt</h2>
+                <span>$20</span>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <!-- Add more products as needed -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Leather Shop. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+</body>
+</html>

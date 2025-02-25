@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leather Shop | Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .user-actions a {
+            color: white;
+            margin: 0 10px;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .hero .btn {
+            padding: 10px 30px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        /* Featured Section Styles */
+        .featured {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .featured h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .product-carousel {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product-item {
+            width: 200px;
+            text-align: center;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Product Listings Section */
+        .product-listing {
+            padding: 40px 20px;
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-item {
+            width: 200px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-item .btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        /* Product Detail Page */
+        .product-detail {
+            display: flex;
+            padding: 40px;
+        }
+
+        .product-image img {
+            width: 500px;
+            height: auto;
+        }
+
+        .product-info {
+            margin-left: 40px;
+        }
+
+        .product-info h1 {
+            font-size: 32px;
+        }
+
+        .product-info span {
+            font-size: 24px;
+            color: green;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        .actions input {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .actions .btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Leather Shop</div>
+        <nav>
+            <ul>
+                <li><a href="website.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="kids.html">Kids</a></li>
+                <li><a href="#">New Releases</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="C:\xampp\htdocs\leather_shop\login.html">LOGIN</a> 
+            <a href="cart 3.html" class="cart">Cart (0)</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Explore the Best Leather Collection</h1>
+            <p>Discover new arrivals and exclusive collections for men, women, and kids</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Sections -->
+    <section class="featured">
+        <h2>New Arrivals</h2>
+        <div class="product-carousel">
+            <!-- Example product items -->
+            <div class="product-item">
+                <img src="product1.jpg" alt="Leather Jacket">
+                <p>Men's Leather Jacket</p>
+                <span>$150</span>
+            </div>
+            <div class="product-item">
+                <img src="product2.jpg" alt="Leather Bag">
+                <p>Men's Leather Shoes</p>
+                <span>$200</span>s
+            </div>
+            <!-- Add more products here -->
+        </div>
+    </section>
+
+    <!-- Product Listings Section -->
+    <section class="product-listing">
+        <h2>Men's Leather Products</h2>
+
+        <div class="filter-section">
+            <h4>Filters</h4>
+            <!-- Filter options like categories, price range, colors -->
+        </div>
+
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="product1.jpg" alt="Leather Jacket">
+                <p>Men's Leather Jacket</p>
+                <span>$150</span>
+                <a href="cart 3.html" class="btn">Add to Cart</a>
+            </div>
+            <div class="product-item">
+                <img src="product2.jpg" alt="Leather Shoes">
+                <p>Men's Leather Shoes</p>
+                <span>$120</span>
+                <a href="cart 3.html" class="btn">Add to Cart</a>
+            </div>
+            <!-- More products here -->
+        </div>
+    </section>
+
+    <!-- Product Detail Page -->
+    <section class="product-detail">
+        <div class="product-image">
+            <img src="product1.jpg" alt="Leather Jacket">
+        </div>
+        <div class="product-info">
+            <h1>Men's Leather Jacket</h1>
+            <span>$150</span>
+            <p>A premium leather jacket with top-notch craftsmanship. Available in all sizes and colors.</p>
+            <div class="actions">
+                <input type="number" value="1" min="1">
+                <a href="cart 3.html" class="btn">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Leather Shop. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+</body>
+</html>
