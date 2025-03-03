@@ -106,13 +106,26 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let jacket = localStorage.getItem('mens_leather_jacket');
+            const cartBody = document.getElementById("cart-body");
             jacket = jacket ? parseInt(jacket) : 0;
+            if (jacket) {
+                cartBody.innerHTML = `<tr>
+                    <td>Men's Leather Jacket</td>
+                    <td>$150</td>
+                    <td class="quantity"><input type="number" id="leather-item-qty" value="0" min="0"></td>
+                    <td id="jacket-total">$0</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>`;
+            }
             let jacketTotal = 150 * jacket;
             document.getElementById('leather-item-qty').value = jacket;
             document.getElementById('jacket-total').textContent = `$${jacketTotal}`;
 
             let shoes = localStorage.getItem('mens_leather_shoes');
             shoes = shoes ? parseInt(shoes) : 0;
+            if (shoes) {
+                
+            } 
             let shoesTotal = 120 * shoes;
             document.getElementById('shoes-item-qty').value = shoes;
             document.getElementById('shoes-total').textContent = `$${shoesTotal}`;
@@ -151,21 +164,15 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Men's Leather Jacket</td>
-                    <td>$150</td>
-                    <td class="quantity"><input type="number" id="leather-item-qty" value="0" min="0"></td>
-                    <td id="jacket-total">$0</td>
-                    <td><button class="remove-btn">Remove</button></td>
-                </tr>
-                <tr>
+            <tbody id="cart-body">
+                
+                <!-- <tr>
                     <td>Men's Leather Shoes</td>
                     <td>$120</td>
                     <td class="quantity"><input type="number" id="shoes-item-qty" value="0" min="0"></td>
                     <td id="shoes-total">$0</td>
                     <td><button class="remove-btn">Remove</button></td>
-                </tr>
+                </tr> -->
             </tbody>
             <tfoot>
                 <tr>
