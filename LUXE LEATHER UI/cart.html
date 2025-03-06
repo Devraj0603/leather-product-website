@@ -1,205 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Cart | Leather Shop</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-        }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+      }
 
-        header .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+      header .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+      nav ul li {
+        margin: 0 15px;
+      }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
 
-        .user-actions a {
-            color: white;
-            margin: 0 10px;
-        }
+      .user-actions a {
+        color: white;
+        margin: 0 10px;
+      }
 
-        .cart-container {
-            width: 80%;
-            margin: 40px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+      .cart-container {
+        width: 80%;
+        margin: 40px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
 
-        .quantity input {
-            width: 50px;
-            text-align: center;
-        }
+      .quantity input {
+        width: 50px;
+        text-align: center;
+      }
 
-        .remove-btn {
-            padding: 5px 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 3px;
-        }
+      .remove-btn {
+        padding: 5px 10px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+      }
 
-        .checkout-btn {
-            display: block;
-            width: 200px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            margin: 20px auto;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+      .checkout-btn {
+        display: block;
+        width: 200px;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        margin: 20px auto;
+        text-decoration: none;
+        border-radius: 5px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <script>
-        function removeItem(item) {
-            // alert("Hello");
-            let qty = document.getElementById('leather-item-qty').value;
-            // alert(qty);
-            if (item == 'jacket') {
-                // let jacket = localStorage.removeItem('mens_leather_jacket');
-                let jqty = localStorage.getItem('mens_leather_jacket');
-                let totalQuantity = parseInt(jqty) - parseInt(qty);
-                localStorage.setItem('mens_leather_jacket',totalQuantity);
-                if (totalQuantity<=0) {
-                    localStorage.removeItem('mens_leather_jacket');
-                    document.getElementById('jacket-row').remove();
-                }
-            }
+      function removeItem(item) {
+        let qty = document.getElementById("leather-item-qty").value;
+        if (item == "jacket") {
+          //   let jqty = localStorage.getItem("mens_leather_jacket");
+          //   let totalQuantity = parseInt(jqty) - parseInt(qty);
+          //   localStorage.setItem("mens_leather_jacket", totalQuantity);
+          localStorage.removeItem("mens_leather_jacket");
+          document.getElementById("jacket-row").remove();
+          document.getElementById("total-amount-row").remove();
+          const cartBody = document.getElementById("cart-body");
+          cartBody.innerHTML = `<tr>
+                    <td colspan='5' style="text-align:center">Your Cart is Empty.</td>
+                </tr>`;
+          //   if (totalQuantity <= 0) {
+          //     localStorage.removeItem("mens_leather_jacket");
+          //     document.getElementById("jacket-row").remove();
+          //   }
         }
-        document.addEventListener("DOMContentLoaded", function () {
-            let jacket = localStorage.getItem('mens_leather_jacket');
-            const cartBody = document.getElementById("cart-body");
-            jacket = jacket ? parseInt(jacket) : 0;
-            if (jacket) {
-                cartBody.innerHTML = `<tr id="jacket-row">
+      }
+      function updateQuantity(item, action) {
+        // alert("Hello");
+        // alert(qty);
+        if (item == "jacket") {
+          // let jacket = localStorage.removeItem('mens_leather_jacket');
+          if (action == "remove") {
+            let jqty = localStorage.getItem("mens_leather_jacket");
+            let totalQuantity = parseInt(jqty) - 1;
+            localStorage.setItem("mens_leather_jacket", totalQuantity);
+            document.getElementById("leather-item-qty").value = totalQuantity;
+            if (totalQuantity <= 0) {
+              localStorage.removeItem("mens_leather_jacket");
+              document.getElementById("jacket-row").remove();
+              document.getElementById("total-amount-row").remove();
+              const cartBody = document.getElementById("cart-body");
+              cartBody.innerHTML = `<tr>
+                    <td colspan='5' style="text-align:center">Your Cart is Empty.</td>
+                </tr>`;
+            }
+          } else {
+            let jqty = localStorage.getItem("mens_leather_jacket");
+            let totalQuantity = parseInt(jqty) + 1;
+            localStorage.setItem("mens_leather_jacket", totalQuantity);
+            document.getElementById("leather-item-qty").value = totalQuantity;
+          }
+        }
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        let jacket = localStorage.getItem("mens_leather_jacket");
+        const cartBody = document.getElementById("cart-body");
+        jacket = jacket ? parseInt(jacket) : 0;
+        if (jacket) {
+          cartBody.innerHTML = `<tr id="jacket-row">
                     <td>Men's Leather Jacket</td>
                     <td>$150</td>
-                    <td class="quantity"><input type="number" id="leather-item-qty" value="0" min="0"></td>
+                    <td class="quantity">
+                    <button class="qty-btn" onclick="updateQuantity('jacket', 'remove')">-</button>
+                    <input type="text" style="width: 30px;" id="leather-item-qty" value="0" min="0">
+                    <button class="qty-btn" onclick="updateQuantity('jacket', 'add')">+</button>
+                    </td>
                     <td id="jacket-total">$0</td>
                     <td><button class="remove-btn" onclick="removeItem('jacket')">Remove</button></td>
                 </tr>`;
-            }
-            let jacketTotal = 150 * jacket;
-            document.getElementById('leather-item-qty').value = jacket;
-            document.getElementById('jacket-total').textContent = `$${jacketTotal}`;
+        }
+        let jacketTotal = 150 * jacket;
+        document.getElementById("leather-item-qty").value = jacket;
+        document.getElementById("jacket-total").textContent = `$${jacketTotal}`;
 
-            let shoes = localStorage.getItem('mens_leather_shoes');
-            shoes = shoes ? parseInt(shoes) : 0;
-            if (shoes) {
+        let shoes = localStorage.getItem("mens_leather_shoes");
+        shoes = shoes ? parseInt(shoes) : 0;
+        if (shoes) {
+        }
+        let shoesTotal = 120 * shoes;
+        document.getElementById("shoes-item-qty").value = shoes;
+        document.getElementById("shoes-total").textContent = `$${shoesTotal}`;
 
-            }
-            let shoesTotal = 120 * shoes;
-            document.getElementById('shoes-item-qty').value = shoes;
-            document.getElementById('shoes-total').textContent = `$${shoesTotal}`;
-
-            let total = jacketTotal + shoesTotal;
-            document.getElementById('total-amount').textContent = `$${total}`;
-        });
+        let total = jacketTotal + shoesTotal;
+        document.getElementById("total-amount").textContent = `$${total}`;
+      });
     </script>
 
     <header>
-        <div class="logo">Leather Shop</div>
-        <nav>
-            <ul>
-                <li><a href="website.html">Home</a></li>
-                <li><a href="men.html">Men</a></li>
-                <li><a href="women.html">Women</a></li>
-                <li><a href="kids.html">Kids</a></li>
-                <li><a href="#">New Releases</a></li>
-            </ul>
-        </nav>
-        <div class="user-actions">
-            <a href="C:\xampp\htdocs\leather_shop\login.html">LOGIN</a>
-            <a href="cart 3.html" class="cart" id="cartVal">Cart (0)</a>
-        </div>
+      <div class="logo">Leather Shop</div>
+      <nav>
+        <ul>
+          <li><a href="website.html">Home</a></li>
+          <li><a href="men.html">Men</a></li>
+          <li><a href="women.html">Women</a></li>
+          <li><a href="kids.html">Kids</a></li>
+          <li><a href="#">New Releases</a></li>
+        </ul>
+      </nav>
+      <div class="user-actions">
+        <a href="C:\xampp\htdocs\leather_shop\login.html">LOGIN</a>
+        <a href="cart 3.html" class="cart" id="cartVal">Cart (0)</a>
+      </div>
     </header>
 
     <div class="cart-container">
-        <h2>Shopping Cart</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="cart-body">
-
-                <!-- <tr>
+      <h2>Shopping Cart</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+          <!-- <tr>
                     <td>Men's Leather Shoes</td>
                     <td>$120</td>
                     <td class="quantity"><input type="number" id="shoes-item-qty" value="0" min="0"></td>
                     <td id="shoes-total">$0</td>
                     <td><button class="remove-btn">Remove</button></td>
                 </tr> -->
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" style="text-align:left;"><strong>Total Amount:</strong></td>
-                    <td id="total-amount"><strong>$0</strong></td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
-        <a href="#" class="checkout-btn">Proceed to Checkout</a>
+        </tbody>
+        <tfoot>
+          <tr id="total-amount-row">
+            <td colspan="3" style="text-align: left">
+              <strong>Total Amount:</strong>
+            </td>
+            <td id="total-amount"><strong>$0</strong></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <a href="#" class="checkout-btn">Proceed to Checkout</a>
     </div>
-
-</body>
-
+  </body>
 </html>
