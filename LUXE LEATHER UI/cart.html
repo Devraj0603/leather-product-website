@@ -101,6 +101,80 @@
   </head>
 
   <body>
+	<script>
+    function loadCart() {
+        let cartBody = document.getElementById("cart-body");
+        cartBody.innerHTML = "";
+
+        let items = [
+            { name: "leather_jacket", price: 150 },
+            { name: "leather_shoes", price: 120 },
+            { name: "leather_bag", price: 200 }  
+        ];
+
+        let totalAmount = 0;
+        let cartCount = 0;
+
+        items.forEach((item) => {
+            let quantity = parseInt(localStorage.getItem(`mens_${item.name}`) || "0");
+
+            if (quantity > 0) {
+                let itemTotal = quantity * item.price;
+                totalAmount += itemTotal;
+                cartCount += quantity;
+
+                cartBody.innerHTML += `
+                    <tr id="${item.name}-row">
+                        <td>${item.name.replace("_", " ")}</td>
+                        <td>$${item.price}</td>
+                        <td>
+                            <button onclick="updateQuantity('${item.name}', 'remove')">-</button>
+                            <input type="text" id="${item.name}-item-qty" value="${quantity}" readonly>
+                            <button onclick="updateQuantity('${item.name}', 'add')">+</button>
+                        </td>
+                        <td id="${item.name}-total">$${itemTotal}</td>
+                        <td><button onclick="removeItem('${item.name}')">Remove</button></td>
+                    </tr>`;
+            }
+        });
+
+        document.getElementById("total-amount").textContent = `$${totalAmount}`;
+        document.getElementById("cartVal").textContent = `Cart (${cartCount})`; // ✅ Update Cart Counter
+    }
+
+    function updateQuantity(item, action) {
+        let qtyField = document.getElementById(`${item}-item-qty`);
+        let currentQty = parseInt(qtyField.value);
+
+        if (action === "remove" && currentQty > 0) {
+            currentQty -= 1;
+        } else if (action === "add") {
+            currentQty += 1;
+        }
+
+        if (currentQty <= 0) {
+            removeItem(item);
+        } else {
+            localStorage.setItem(`mens_${item}`, currentQty);
+            let price = item.includes("jacket") ? 150 : item.includes("shoes") ? 120 : 200;
+            document.getElementById(`${item}-total`).textContent = `$${currentQty * price}`;
+        }
+
+        loadCart();  // ✅ Reload cart after update
+    }
+
+    function removeItem(item) {
+        localStorage.removeItem(`mens_${item}`);
+        document.getElementById(`${item}-row`).remove();
+        loadCart();  // ✅ Update cart after item removal
+    }
+
+    document.addEventListener("DOMContentLoaded", loadCart);
+</script>
+
+
+
+
     <script>
       function removeItem(item) {
         if (item === "jacket") {
