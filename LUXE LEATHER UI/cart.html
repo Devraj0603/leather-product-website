@@ -129,7 +129,7 @@
                         <td>$${item.price}</td>
                         <td>
                             <button onclick="updateQuantity('${item.name}', 'remove')">-</button>
-                            <input type="text" id="${item.name}-item-qty" value="${quantity}" readonly>
+                            <input type="text" style="width: 20px; text-align: center;" id="${item.name}-item-qty" value="${quantity}" readonly>
                             <button onclick="updateQuantity('${item.name}', 'add')">+</button>
                         </td>
                         <td id="${item.name}-total">$${itemTotal}</td>
@@ -175,7 +175,7 @@
 
 
 
-    <script>
+    <!-- <script>
       function removeItem(item) {
         if (item === "jacket") {
           localStorage.removeItem("mens_leather_jacket");
@@ -267,7 +267,7 @@
                 </tr>`;
         }
       });
-    </script>
+    </script> -->
     
 
     <header>

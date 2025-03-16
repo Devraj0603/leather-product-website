@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -146,6 +147,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -162,7 +164,9 @@
         </nav>
         <div class="user-actions">
             <a href="login.html">LOGIN</a>
-            <a href="#" class="cart">Cart (0)</a>
+            <!-- <a href="#" class="cart">Cart (0)</a> -->
+            <a href="cart.html" class="cart" id="cartVal">Cart (0)</a>
+
         </div>
     </header>
 
@@ -198,19 +202,24 @@
                 <img src="product1.jpg" alt="Leather Jacket">
                 <h2>Leather Jacket</h2>
                 <span>$150</span>
-                <a href="#" class="btn">Add to Cart</a>
+                <!-- <a href="#" class="btn">Add to Cart</a> -->
+                <button style="cursor: pointer;" onclick="handleAddToCart('jacket')" class="btn">Add to Cart</button>
+
             </div>
             <div class="product-item">
                 <img src="product2.jpg" alt="Leather Shoes">
                 <h2>Leather Shoes</h2>
                 <span>$120</span>
-                <a href="#" class="btn">Add to Cart</a>
+                <!-- <a href="#" class="btn">Add to Cart</a> -->
+                <button style="cursor: pointer;" class="btn" onclick="handleAddToCart('shoes')">Add to Cart</button>
             </div>
             <div class="product-item">
                 <img src="product4.png" alt="Leather Bag">
                 <h2>Leather Bag</h2>
                 <span>$200</span>
-                <a href="#" class="btn">Add to Cart</a>
+                <!-- <a href="#" class="btn">Add to Cart</a> -->
+                <button style="cursor: pointer;" class="btn" onclick="handleAddToCart('bag')">Add to Cart</button>
+
             </div>
             <!-- Add more products as needed -->
         </div>
@@ -223,6 +232,55 @@
             <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
         </div>
     </footer>
+    <script>
+        let cart = 0;
+        let mens_leather_jacket = localStorage.getItem('mens_leather_jacket');
+        let mens_leather_shoes = localStorage.getItem('mens_leather_shoes');
+        let mens_leather_bag = localStorage.getItem('mens_leather_bag');
+
+
+        if (mens_leather_jacket) {
+            cart += parseInt(mens_leather_jacket);
+        }
+
+        if (mens_leather_shoes) {
+            cart += parseInt(mens_leather_shoes);
+        }
+        document.getElementById('cartVal').textContent = `Cart (${cart})`;
+
+
+        function handleAddToCart(items) {
+            if (items === 'jacket') {
+                let quantity = localStorage.getItem('mens_leather_jacket');
+                localStorage.setItem('mens_leather_jacket', quantity ? parseInt(quantity) + 1 : 1);
+            } else if (items === 'shoes') {
+                let quantity = localStorage.getItem('mens_leather_shoes');
+                localStorage.setItem('mens_leather_shoes', quantity ? parseInt(quantity) + 1 : 1);
+            }
+            else if (items === 'bag') {
+                let quantity = localStorage.getItem('mens_leather_bag');
+                localStorage.setItem('mens_leather_bag', quantity ? parseInt(quantity) + 1 : 1);
+            }
+            cart += 1;
+            document.getElementById('cartVal').textContent = `Cart (${cart})`;
+            // window.location.href = 'cart.html'; 
+        };
+
+        document.getElementById('cartForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let jacket = document.getElementById('mens_leather_jacket').value;
+            let quantity = localStorage.getItem('mens_leather_jacket');
+            let shoes = localStorage.getItem('mens_leather_shoes');
+            shoes = shoes ? parseInt(shoes) : 0;
+            let totalJacketQuantity = quantity ? parseInt(quantity) + parseInt(jacket) : parseInt(jacket);
+            let totalQuantity = totalJacketQuantity + shoes;
+            cart = totalQuantity;
+            document.getElementById('cartVal').textContent = `Cart (${cart})`;
+            localStorage.setItem('mens_leather_jacket', totalJacketQuantity);
+            // window.location.href = 'cart.html'; 
+        });
+    </script>
 
 </body>
+
 </html>
